@@ -1,41 +1,29 @@
-var a = document.createElement("a");
-document.getElementById("items").appendChild(a);
+/* Créer fonction qui génère toutes ces balises pour tous les produits (product.lenght) */
 
-/* Ajouter href a pour renvoi vers la page produit */
-
-var article = document.createElement("article");
-document.querySelector("#items > a").appendChild(article);
-
-var img = document.createElement("img");
-document.querySelector("#items > a > article").appendChild(img);
-
-var h3 = document.createElement("h3");
-h3.setAttribute("class","productName");
-document.querySelector("#items > a > article").appendChild(h3);
-
-var p = document.createElement("p");
-p.setAttribute("class","productDescription");
-document.querySelector("#items > a > article").appendChild(p);
-
-
-
-
-function displayAvailableProducts(){
-    fetch(" http://localhost:3000/api/products")
-    .then(function(res) {
-        if (res.ok) {
-        return res.json();
+class Product{
+    constructor(jsonProduct){
+        jsonProduct && Object.assign(this, jsonProduct);
     }
-})
-
-.then(function(Products) {
-    document
-        .getElementById("items");
-    })
-
-.catch(function(err) {
-    // Une erreur est survenue
-    });
 }
 
-displayAvailableProducts();
+class ProductManager{
+    constructor(listProduct){
+        this.listProduct = listProduct;
+    }
+}
+
+fetch("http://localhost:3000/api/products")
+    .then (data => data.json())
+    .then (jsonListProduct => {
+        for(let jsonProduct of jsonListProduct){
+            let product = new Product(jsonProduct);
+            document.getElementById("items").innerHTML += 
+            `<a href="#">
+                <article>
+                    <img src="${product.imageUrl}" alt="${product.altTxt}"/>
+                    <h3 class="productName">${product.name}</h3>
+                    <p class="productDescription">${product.description}</p>
+                </article>
+            </a>`
+        }
+    });
