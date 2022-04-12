@@ -1,4 +1,4 @@
-// Get available products
+// Get products from API
 getProducts();
 
 // Create products from above list
@@ -16,7 +16,9 @@ async function createProducts() {
     let result = await getProducts()
     .then( (product) => {
         // Create iteration for each product from list
-        for (let i=0; i < product.length; i++) {		
+        for (let i in product) {
+        // OU (let i=0; i < product.length; i++)
+
             // Insert <a> in class .items
             let productLink = document.createElement("a");
             document.querySelector(".items").appendChild(productLink);
@@ -49,7 +51,9 @@ async function createProducts() {
             productDescription.classList.add("productName");
             // Add product description in p tag from API
             productDescription.innerHTML = product[i].description;
+
+            console.log("New couch added !");
         }
     });
-    console.log("Products have been created !");
+    console.log("All products have been created !");
 }
