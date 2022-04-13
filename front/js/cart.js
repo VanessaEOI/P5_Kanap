@@ -73,7 +73,7 @@ if (!productLocalStorage) {
         // Insertion quantity
         let productQuantity = document.createElement("input");
         productItemContentSettingsQuantity.appendChild(productQuantity);
-        productQuantity.value = productLocalStorage[i].qtyKanap;
+        productQuantity.value = productLocalStorage[i].qttyKanap;
         productQuantity.className = "itemQuantity";
         productQuantity.setAttribute("type", "number");
         productQuantity.setAttribute("min", "1");
@@ -150,13 +150,13 @@ function modifyQtt() {
             event.preventDefault();
 
             // Select item to modify with color && ID
-            let quantityModif = productLocalStorage[k].qtyKanap;
-            let qttModifValue = qttModif[k].valueAsNumber;
+            let quantityModif = productLocalStorage[k].qttyKanap;
+            let qttyModifValue = qttModif[k].valueAsNumber;
             
-            const resultFind = productLocalStorage.find((el) => el.qttModifValue !== quantityModif);
+            const resultFind = productLocalStorage.find((el) => el.qttyModifValue !== quantityModif);
 
-            resultFind.qtyKanap = qttModifValue;
-            productLocalStorage[k].qtyKanap = resultFind.qtyKanap;
+            resultFind.qttyKanap = qttyModifValue;
+            productLocalStorage[k].qttyKanap = resultFind.qttyKanap;
 
             localStorage.setItem("cart", JSON.stringify(productLocalStorage));
         
