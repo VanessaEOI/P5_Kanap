@@ -307,6 +307,6 @@ function postForm() {
   
     }); // End eventListener postForm
   
-} // End of postForm form
+} // End of sending postForm form
 
 postForm();
