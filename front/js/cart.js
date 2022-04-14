@@ -119,11 +119,11 @@ if (!productLocalStorage) {
 function getTotals(){
 
     // Retrieve qtty
-    var elemsQtt = document.getElementsByClassName('itemQuantity');
-    var myLength = elemsQtt.length,
+    let elemsQtt = document.getElementsByClassName('itemQuantity');
+    let myLength = elemsQtt.length,
     totalQtt = 0;
 
-    for (var i = 0; i < myLength; ++i) {
+    for (let i = 0; i < myLength; ++i) {
         totalQtt += elemsQtt[i].valueAsNumber;
     }
     
@@ -132,7 +132,7 @@ function getTotals(){
 
     // Retrieve total
     totalPrice = 0;
-    for (var i = 0; i < myLength; ++i) {
+    for (let i = 0; i < myLength; ++i) {
         totalPrice += (elemsQtt[i].valueAsNumber * productLocalStorage[i].priceKanap);
     }
 
