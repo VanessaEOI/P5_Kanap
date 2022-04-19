@@ -27,7 +27,7 @@ if (!productLocalStorage) {
         let productImg = document.createElement("img");
         productDivImg.appendChild(productImg);
         productImg.src = productLocalStorage[i].imgKanap;
-        // productImg.alt = productLocalStorage.altImgProduit;
+        productImg.alt = productLocalStorage[i].altImg;
         
         // Insert <div> for item description
         let productItemContent = document.createElement("div");
@@ -145,19 +145,19 @@ function getTotals(){
 getTotals();
 
 
-function modifyQtt() {
+function modifQtty() {
 
-    let qttModif = document.querySelectorAll(".itemQuantity");
+    let qttyModifier = document.querySelectorAll(".itemQuantity");
 
-    for (let k= 0; k < qttModif.length; k++){
+    for (let k = 0; k < qttyModifier.length; k++){
 
-        qttModif[k].addEventListener("change" , (event) => {
+        qttyModifier[k].addEventListener("change" , (event) => {
 
             event.preventDefault();
 
             // Select item to modify with color && ID
             let quantityModif = productLocalStorage[k].qttyKanap;
-            let qttyModifValue = qttModif[k].valueAsNumber;
+            let qttyModifValue = qttyModifier[k].valueAsNumber;
             
             const resultFind = productLocalStorage.find((el) => el.qttyModifValue !== quantityModif);
 
@@ -172,7 +172,7 @@ function modifyQtt() {
     }
 }
 
-modifyQtt();
+modifQtty();
 
 
 // Regex form
