@@ -54,6 +54,10 @@ async function createProducts() {
 
             console.log("New couch added !");
         }
+    })
+    .catch (function(error){
+        return error;
     });
+    
     console.log("All products have been created !");
 }

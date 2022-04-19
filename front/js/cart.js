@@ -91,6 +91,7 @@ if (!productLocalStorage) {
         productSupprimer.className = "deleteItem";
         productSupprimer.innerHTML = "Supprimer";
         productSupprimer.addEventListener("click", (e) => {
+
             e.preventDefault;
         
             // Get color and id with delete btn
@@ -110,6 +111,7 @@ if (!productLocalStorage) {
             if (productLocalStorage.length === 0) {
                 localStorage.clear();
             }
+
             //Refresh page
             location.reload();
         });
@@ -139,14 +141,18 @@ function getTotals(){
     let productTotalPrice = document.getElementById('totalPrice');
     productTotalPrice.innerHTML = totalPrice;
 }
+
 getTotals();
 
 
 function modifyQtt() {
+
     let qttModif = document.querySelectorAll(".itemQuantity");
 
     for (let k= 0; k < qttModif.length; k++){
+
         qttModif[k].addEventListener("change" , (event) => {
+
             event.preventDefault();
 
             // Select item to modify with color && ID
@@ -165,11 +171,13 @@ function modifyQtt() {
         })
     }
 }
+
 modifyQtt();
 
 
 // Regex form
 function getForm() {
+
     // Add Regex
     let form = document.querySelector(".cart__order__form");
 
@@ -183,7 +191,7 @@ function getForm() {
         validFirstName(this);
     });
 
-    // Listen modif lasttName
+    // Listen modif lastName
     form.lastName.addEventListener('change', function() {
         validLastName(this);
     });
@@ -205,6 +213,7 @@ function getForm() {
 
     // Validation firstname
     const validFirstName = function(inputFirstName) {
+
         let firstNameErrorMsg = inputFirstName.nextElementSibling;
 
         if (charRegExp.test(inputFirstName.value)) {
@@ -216,6 +225,7 @@ function getForm() {
 
     // Validation lastname
     const validLastName = function(inputLastName) {
+
         let lastNameErrorMsg = inputLastName.nextElementSibling;
 
         if (charRegExp.test(inputLastName.value)) {
@@ -227,6 +237,7 @@ function getForm() {
 
     // Validation address
     const validAddress = function(inputAddress) {
+
         let addressErrorMsg = inputAddress.nextElementSibling;
 
         if (addressRegExp.test(inputAddress.value)) {
@@ -238,6 +249,7 @@ function getForm() {
 
     // Validation city
     const validCity = function(inputCity) {
+
         let cityErrorMsg = inputCity.nextElementSibling;
 
         if (charRegExp.test(inputCity.value)) {
@@ -249,6 +261,7 @@ function getForm() {
 
     // Validation email
     const validEmail = function(inputEmail) {
+
         let emailErrorMsg = inputEmail.nextElementSibling;
 
         if (emailRegExp.test(inputEmail.value)) {
@@ -262,17 +275,20 @@ function getForm() {
 getForm();
 
 function postForm() {
+
     const order = document.getElementById('order');
+
     order.addEventListener('click', (event) => {
-    event.preventDefault();
+
+        event.preventDefault();
   
         // Retrieving form datas in an object
         const contact = {
-        firstName : document.getElementById('firstName').value,
-        lastName : document.getElementById('lastName').value,
-        address : document.getElementById('address').value,
-        city : document.getElementById('city').value,
-        email : document.getElementById('email').value
+            firstName : document.getElementById('firstName').value,
+            lastName : document.getElementById('lastName').value,
+            address : document.getElementById('address').value,
+            city : document.getElementById('city').value,
+            email : document.getElementById('email').value
         }
 
         // Create IDs array from localStorage
@@ -284,23 +300,24 @@ function postForm() {
   
         // Adding from datas & products in card in an object
         const sendFormData = {
-        contact,
-        products,
+            contact,
+            products,
         }
   
         // Sending form & localStorage (sendFormData) to server
     
         const options = {
-        method: 'POST',
-        body: JSON.stringify(sendFormData),
-        headers: { 
-            'Content-Type': 'application/json',
+            method: 'POST',
+            body: JSON.stringify(sendFormData),
+            
+            headers: { 
+                'Content-Type': 'application/json',
             }
         };
   
         fetch("http://localhost:3000/api/products/order", options)
-            .then(response => response.json())
-            .then(data => {
+        .then(response => response.json())
+        .then(data => {
             localStorage.setItem('orderId', data.orderId);
             document.location.href = 'confirmation.html?id='+ data.orderId;
         });
