@@ -4,7 +4,7 @@ This project is the introduction to JavaScript.
 
 To realise this project, we were provided with the front-end and the API and my role here was to create the dynamic content with JavaScript.
 
-Targets :
+**Main goals :**
 
  - Interact with a web service with JavaScript
  - Manage JavaScript events
