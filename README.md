@@ -1,15 +1,12 @@
-# Kanap #
+## ![logo OpenClassrooms](https://raw.githubusercontent.com/thierry-laval/archives/master/images/Logo_OpenClassrooms.png)   OpenClassrooms Project 5
 
-This is the front end and back end server for Project 5 of the Web Developer path.
+This project is the introduction to JavaScript.
 
-### Back end Prerequisites ###
+To realise this project, we were provided with the front-end and the API and my role here was to create the dynamic content with JavaScript.
 
-You will need to have Node and `npm` installed locally on your machine.
+Targets :
 
-### Back end Installation ###
-
-Clone this repo. From the "back" folder of the project, run `npm install`. You 
-can then run the server with `node server`. 
-The server should run on `localhost` with default port `3000`. If the
-server runs on another port for any reason, this is printed to the
-console when the server starts, e.g. `Listening on port 3001`.
+ - Interact with a web service with JavaScript
+ - Manage JavaScript events
+ - Validate data from external sources
+ - And create a test plan for an application
